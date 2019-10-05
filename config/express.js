@@ -66,9 +66,14 @@ const express = require('express')
     app.use('*', (req, res) => {
         res.status(404).json({
             message: `route ${req.originalUrl} does not exists!`
-        })
+        });
     });
 
     app.use((req, res, next, err) => {
-
+        console.error(err.stack);
+        res.status(500).json({
+            message: 'Internal server error'
+        });
     });
+
+    module.exports = app;
