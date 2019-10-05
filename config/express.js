@@ -7,7 +7,7 @@ const express = require('express')
     , multer = require('multer')
     , uuidv4 = require('uuid/v4')
     , fs = require('fs')
-    , ;
+    , { photoRoutes, userRoutes } = require('../app/routes');
 
     const uploadDir = './uploads';
     if (!fs.existsSync(uploadDir)){
@@ -62,6 +62,8 @@ const express = require('express')
     });
 
     // Routes
+    userRoutes(app);
+    photoRoutes(app);
 
     app.use('*', (req, res) => {
         res.status(404).json({
