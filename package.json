@@ -1,0 +1,20 @@
+{
+  "name": "riddles-api",
+  "version": "1.0.0",
+  "description": "A simple api to handle users assignment in riddle app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "angular",
+    "riddles",
+    "charadas",
+    "mean",
+    "nodejs",
+    "express"
+  ],
+  "author": "ergito vilanculos",
+  "license": "ISC"
+}
