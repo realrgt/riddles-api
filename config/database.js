@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS user (
     user_email VARCHAR(255) NOT NULL,
     user_password VARCAHR(255) NOT NULL,
     user_full_name VARCAHR(40) NOT NULL,
+    user_score BIGINT NOT NULL DEFAULT (0),
     user_join_date TIMESTAMP DEFAULT current_timestamp
 )
 `;
@@ -18,19 +19,16 @@ INSERT INTO user (
     user_name,
     user_email,
     user_password,
-    user_full_name
-) SELECT 'ergito', 'ergito@email.com', '1234', 'Ergito' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'ergito')
+    user_full_name,
+    user_score
+) SELECT 'ergito', 'ergito@email.com', '1234', 'Ergito', 100 WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'ergito')
 `;
 
 const PHOTO_SCHEMA =
 `
 CREATE TABLE IF NOT EXISTS photo (
     photo_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    photo_post_date TIMESTAMP NOT NULL,
     photo_url TEXT NOT NULL,
-    photo_description TEXT DEFAULT ('') NOT NULL,
-    photo_allow_comments INTEGER NOT NULL DEFAULT (1),
-    photo_likes BIGINT NOT NULL DEFAULT (0),
     user_id INTEGER,
     FOREIGN KEY(user_id) REFERENCES user(user_id) ON DELETE CASCADE 
 )
